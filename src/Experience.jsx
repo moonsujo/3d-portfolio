@@ -10,9 +10,43 @@ import {
 } from "@react-three/drei";
 import MacbookNew from "./MacbookNew";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Experience() {
+  const [githubHover, setGithubHover] = useState(false);
+  const [resumeHover, setResumeHover] = useState(false);
+
+  function onGithubHoverEnter() {
+    console.log("onGithubHoverOver");
+    setGithubHover(true);
+  }
+
+  function onGithubHoverExit() {
+    console.log("onGithubHoverOver");
+    setGithubHover(false);
+  }
+
+  function onResumeHoverEnter() {
+    console.log("onGithubHoverEnter");
+    setResumeHover(true);
+  }
+
+  function onResumeHoverExit() {
+    console.log("onGithubHoverExit");
+    setResumeHover(false);
+  }
+
+  function onGithubClick() {
+    window.open("https://www.github.com/moonsujo", "_blank");
+  }
+
+  function onResumeClick() {
+    window.open(
+      "https://moonsu-resume.s3.amazonaws.com/moonsu-rhino-jo-apple-full-stack-spg-081523.pdf",
+      "_blank"
+    );
+  }
+
   return (
     <>
       <ambientLight color={"0x030A16"} />
@@ -45,6 +79,32 @@ export default function Experience() {
             maxWidth={2}
           >
             Moonsu Rhino Jo
+          </Text>
+          <Text
+            font="./bangers-v20-latin-regular.woff"
+            position={[-2.8, 0.2, -0.1]}
+            rotation-y={0}
+            fontSize={0.3}
+            maxWidth={2}
+            color={githubHover ? "skyblue" : "white"}
+            onPointerEnter={onGithubHoverEnter}
+            onPointerOut={onGithubHoverExit}
+            onPointerDown={onGithubClick}
+          >
+            Github
+          </Text>
+          <Text
+            font="./bangers-v20-latin-regular.woff"
+            position={[-2.8, -0.3, -0.1]}
+            rotation-y={0}
+            fontSize={0.3}
+            maxWidth={2}
+            color={resumeHover ? "skyblue" : "white"}
+            onPointerEnter={onResumeHoverEnter}
+            onPointerOut={onResumeHoverExit}
+            onPointerDown={onResumeClick}
+          >
+            Resume
           </Text>
         </Float>
       </PresentationControls>
