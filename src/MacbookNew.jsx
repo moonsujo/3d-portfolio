@@ -9,9 +9,7 @@ import { useFrame } from "@react-three/fiber";
 export default function MacbookNew({ scale }) {
   const group = useRef();
 
-  const { nodes, materials } = useGLTF(
-    "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf"
-  );
+  const { nodes, materials } = useGLTF("models/macbook.gltf");
   return (
     <group ref={group} scale={scale} position-y={-1.2} dispose={null}>
       <group position={[0, 0.52, 0]} scale={[0.1, 0.1, 0.1]}>
